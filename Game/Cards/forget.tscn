@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjpb3reurcq4m"]
+
+[ext_resource type="PackedScene" uid="uid://c4kg4q8jhrk8t" path="res://Game/card.tscn" id="1_jr8it"]
+[ext_resource type="Script" path="res://Game/Cards/forget.gd" id="2_shlvk"]
+
+[node name="root_forget" instance=ExtResource("1_jr8it")]
+script = ExtResource("2_shlvk")
+
+[node name="name_label" parent="control_parent" index="0"]
+text = "Forget - Action"
+
+[node name="body_label" parent="control_parent" index="1"]
+text = "Your opponent discards two cards."

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://criobhc7llv75"]
+
+[ext_resource type="PackedScene" uid="uid://c4kg4q8jhrk8t" path="res://Game/card.tscn" id="1_576ml"]
+[ext_resource type="Script" path="res://Game/Cards/rewind.gd" id="2_qf08j"]
+
+[node name="root_rewind" instance=ExtResource("1_576ml")]
+script = ExtResource("2_qf08j")
+
+[node name="name_label" parent="control_parent" index="0"]
+text = "Rewind - Action"
+
+[node name="body_label" parent="control_parent" index="1"]
+text = "Shuffle the discard pile and both player's hands into the deck.
+Both players draw four cards."

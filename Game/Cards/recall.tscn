@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmjq0t231tkrl"]
+
+[ext_resource type="PackedScene" uid="uid://c4kg4q8jhrk8t" path="res://Game/card.tscn" id="1_tqmqh"]
+[ext_resource type="Script" path="res://Game/Cards/recall.gd" id="2_ntdy3"]
+
+[node name="root_recall" instance=ExtResource("1_tqmqh")]
+script = ExtResource("2_ntdy3")
+
+[node name="name_label" parent="control_parent" index="0"]
+text = "Recall - Action"
+
+[node name="body_label" parent="control_parent" index="1"]
+text = "Put a card from the discard pile into your hand."

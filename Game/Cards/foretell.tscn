@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2d6y8wrlr8di"]
+
+[ext_resource type="PackedScene" uid="uid://c4kg4q8jhrk8t" path="res://Game/card.tscn" id="1_gxdg5"]
+[ext_resource type="Script" path="res://Game/Cards/foretell.gd" id="2_aatvl"]
+
+[node name="root_foretell" instance=ExtResource("1_gxdg5")]
+script = ExtResource("2_aatvl")
+
+[node name="name_label" parent="control_parent" index="0"]
+text = "Foretell - Action"
+
+[node name="body_label" parent="control_parent" index="1"]
+text = "Look at the top four cards of the deck. Return them in any order.
+
+Draw a card."

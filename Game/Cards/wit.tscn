@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4r6kug731w47"]
+
+[ext_resource type="PackedScene" uid="uid://c4kg4q8jhrk8t" path="res://Game/card.tscn" id="1_fi5ls"]
+[ext_resource type="Script" path="res://Game/Cards/wit.gd" id="2_4u628"]
+
+[node name="root_wit" instance=ExtResource("1_fi5ls")]
+script = ExtResource("2_4u628")
+type = "reaction"
+
+[node name="name_label" parent="control_parent" index="0"]
+text = "Wit - Reaction"
+
+[node name="body_label" parent="control_parent" index="1"]
+text = "Draw a card."

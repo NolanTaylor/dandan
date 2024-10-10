@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnmc78ca7jyb0"]
+
+[ext_resource type="PackedScene" uid="uid://c4kg4q8jhrk8t" path="res://Game/card.tscn" id="1_cp0gm"]
+[ext_resource type="Script" path="res://Game/Cards/lapse.gd" id="2_cqy4i"]
+
+[node name="root_lapse" instance=ExtResource("1_cp0gm")]
+script = ExtResource("2_cqy4i")
+type = "reaction"
+
+[node name="name_label" parent="control_parent" index="0"]
+text = "Lapse - Reaction"
+
+[node name="body_label" parent="control_parent" index="1"]
+text = "Counter your opponent's action. Return it to the top of the deck."

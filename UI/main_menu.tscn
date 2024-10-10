@@ -1,0 +1,170 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbmcv882pmpyg"]
+
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_q1a70"]
+[ext_resource type="Theme" uid="uid://dqtchpekbcid" path="res://UI/main_theme.tres" id="2_aijxq"]
+
+[node name="root_main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("2_aijxq")
+script = ExtResource("1_q1a70")
+
+[node name="host_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 452.0
+offset_right = 112.0
+offset_bottom = 503.0
+text = "host"
+
+[node name="join_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 526.0
+offset_right = 102.0
+offset_bottom = 577.0
+text = "join"
+
+[node name="host_popup" type="Window" parent="."]
+title = "Create Lobby"
+initial_position = 2
+size = Vector2i(374, 200)
+visible = false
+
+[node name="vbox_container" type="VBoxContainer" parent="host_popup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 370.0
+offset_bottom = 236.0
+
+[node name="lobby_name_hbox" type="HBoxContainer" parent="host_popup/vbox_container"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="host_popup/vbox_container/lobby_name_hbox"]
+layout_mode = 2
+text = "Lobby Name"
+
+[node name="lobby_name" type="TextEdit" parent="host_popup/vbox_container/lobby_name_hbox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 42)
+layout_mode = 2
+size_flags_horizontal = 10
+scroll_fit_content_height = true
+
+[node name="password_hbox" type="HBoxContainer" parent="host_popup/vbox_container"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="host_popup/vbox_container/password_hbox"]
+layout_mode = 2
+text = "Password"
+
+[node name="lobby_password" type="TextEdit" parent="host_popup/vbox_container/password_hbox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 42)
+layout_mode = 2
+size_flags_horizontal = 10
+scroll_fit_content_height = true
+
+[node name="ref_rect" type="ReferenceRect" parent="host_popup/vbox_container"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="buttons_hbox" type="HBoxContainer" parent="host_popup/vbox_container"]
+layout_mode = 2
+
+[node name="ref_rect_left" type="ReferenceRect" parent="host_popup/vbox_container/buttons_hbox"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+
+[node name="confirm_button" type="Button" parent="host_popup/vbox_container/buttons_hbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Confirm"
+
+[node name="cancel_button" type="Button" parent="host_popup/vbox_container/buttons_hbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[node name="ref_rect_right" type="ReferenceRect" parent="host_popup/vbox_container/buttons_hbox"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+
+[node name="name_empty_error_popup" type="Window" parent="host_popup"]
+initial_position = 2
+size = Vector2i(319, 100)
+visible = false
+always_on_top = true
+popup_window = true
+
+[node name="vbox_container" type="VBoxContainer" parent="host_popup/name_empty_error_popup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 315.0
+offset_bottom = 96.0
+
+[node name="label" type="Label" parent="host_popup/name_empty_error_popup/vbox_container"]
+layout_mode = 2
+text = "lobby name can't be empty :("
+
+[node name="name_empty_error_confirm_button" type="Button" parent="host_popup/name_empty_error_popup/vbox_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "i will fix it o7"
+
+[node name="lobby_popup" type="Window" parent="."]
+title = "Waiting for Client"
+initial_position = 2
+size = Vector2i(320, 160)
+visible = false
+
+[node name="vbox_container" type="VBoxContainer" parent="lobby_popup"]
+offset_left = 8.0
+offset_right = 312.0
+offset_bottom = 160.0
+
+[node name="ref_rect_top" type="ReferenceRect" parent="lobby_popup/vbox_container"]
+layout_mode = 2
+
+[node name="client_vbox" type="VBoxContainer" parent="lobby_popup/vbox_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lobby_join_label" type="Label" parent="lobby_popup/vbox_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ready_button" type="Button" parent="lobby_popup/vbox_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "Ready"
+
+[node name="ref_rect_bottom" type="ReferenceRect" parent="lobby_popup/vbox_container"]
+layout_mode = 2
+
+[node name="join_popup" type="Window" parent="."]
+title = "Join Lobby"
+initial_position = 2
+size = Vector2i(320, 160)
+visible = false
+
+[node name="players" type="Node" parent="."]
+
+[connection signal="pressed" from="host_button" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="join_button" to="." method="_on_join_button_pressed"]
+[connection signal="close_requested" from="host_popup" to="." method="_on_host_popup_close_requested"]
+[connection signal="pressed" from="host_popup/vbox_container/buttons_hbox/confirm_button" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="host_popup/vbox_container/buttons_hbox/cancel_button" to="." method="_on_cancel_button_pressed"]
+[connection signal="close_requested" from="host_popup/name_empty_error_popup" to="." method="_on_name_empty_error_popup_close_requested"]
+[connection signal="focus_exited" from="host_popup/name_empty_error_popup" to="." method="_on_name_empty_error_popup_focus_exited"]
+[connection signal="pressed" from="host_popup/name_empty_error_popup/vbox_container/name_empty_error_confirm_button" to="." method="_on_name_empty_error_confirm_button_pressed"]
+[connection signal="close_requested" from="lobby_popup" to="." method="_on_lobby_popup_close_requested"]
+[connection signal="pressed" from="lobby_popup/vbox_container/ready_button" to="." method="_on_ready_button_pressed"]
+[connection signal="close_requested" from="join_popup" to="." method="_on_join_popup_close_requested"]

@@ -1,3 +1,221 @@
-[gd_scene format=3 uid="uid://dxqh1byutu05b"]
+[gd_scene load_steps=3 format=3 uid="uid://dxqh1byutu05b"]
+
+[ext_resource type="Theme" uid="uid://dqtchpekbcid" path="res://UI/main_theme.tres" id="1_g3skn"]
+[ext_resource type="Script" path="res://Game/main.gd" id="1_stuh8"]
 
 [node name="root_main" type="Node2D"]
+script = ExtResource("1_stuh8")
+
+[node name="multiplayer_spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Game/player.tscn")
+spawn_path = NodePath("../players")
+spawn_limit = 2
+
+[node name="control_layer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_g3skn")
+
+[node name="global_button" type="Button" parent="control_layer"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+focus_mode = 0
+flat = true
+
+[node name="meditate_button" type="Button" parent="control_layer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = 647.0
+offset_right = 173.0
+offset_bottom = 698.0
+text = "Meditate"
+
+[node name="settings_button" type="Button" parent="control_layer"]
+layout_mode = 0
+offset_left = 1123.0
+offset_top = 19.0
+offset_right = 1260.0
+offset_bottom = 70.0
+text = "settings"
+
+[node name="play_button" type="Button" parent="control_layer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1181.0
+offset_top = 653.0
+offset_right = 1257.0
+offset_bottom = 704.0
+disabled = true
+text = "Play"
+
+[node name="resolve_button" type="Button" parent="control_layer"]
+visible = false
+layout_mode = 0
+offset_left = 361.0
+offset_top = 371.0
+offset_right = 484.0
+offset_bottom = 422.0
+text = "resolve"
+
+[node name="view_deck" type="Button" parent="control_layer"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 125.0
+offset_right = 192.0
+offset_bottom = 176.0
+text = "view deck"
+
+[node name="view_discard" type="Button" parent="control_layer"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 217.0
+offset_right = 237.0
+offset_bottom = 268.0
+text = "view discard"
+
+[node name="deck_size" type="Label" parent="control_layer"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 93.0
+offset_right = 165.0
+offset_bottom = 122.0
+text = "deck size: 80"
+
+[node name="discard_pile" type="Label" parent="control_layer"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 186.0
+offset_right = 177.0
+offset_bottom = 215.0
+text = "discard pile: 0"
+
+[node name="server_balance" type="Label" parent="control_layer"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 4.0
+offset_right = 200.0
+offset_bottom = 33.0
+text = "server balance: 3"
+
+[node name="client_balance" type="Label" parent="control_layer"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 39.0
+offset_right = 192.0
+offset_bottom = 68.0
+text = "client balance: 3"
+
+[node name="showcase_panel" type="Panel" parent="control_layer"]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 21.0
+offset_right = 1223.0
+offset_bottom = 692.0
+
+[node name="scroll_container" type="ScrollContainer" parent="control_layer/showcase_panel"]
+layout_mode = 0
+offset_right = 1186.0
+offset_bottom = 666.0
+
+[node name="deck_showcase" type="GridContainer" parent="control_layer/showcase_panel/scroll_container"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 6
+
+[node name="exit_showcase_button" type="Button" parent="control_layer/showcase_panel"]
+layout_mode = 0
+offset_left = 1128.0
+offset_top = 9.0
+offset_right = 1179.0
+offset_bottom = 60.0
+text = "x"
+
+[node name="reorder_panel" type="Panel" parent="control_layer"]
+visible = false
+layout_mode = 0
+offset_left = 263.0
+offset_top = 138.0
+offset_right = 1203.0
+offset_bottom = 435.0
+
+[node name="deck_reorder" type="HBoxContainer" parent="control_layer/reorder_panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 43.0
+offset_right = 939.0
+offset_bottom = 290.0
+
+[node name="top_label" type="Label" parent="control_layer/reorder_panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 50.0
+offset_bottom = 36.0
+text = "top"
+
+[node name="bottom_label" type="Label" parent="control_layer/reorder_panel"]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 5.0
+offset_right = 929.0
+offset_bottom = 34.0
+text = "bottom"
+
+[node name="reorder_done_button" type="Button" parent="control_layer/reorder_panel"]
+layout_mode = 0
+offset_left = 842.0
+offset_top = 239.0
+offset_right = 933.0
+offset_bottom = 290.0
+text = "Done"
+
+[node name="markers" type="Node2D" parent="."]
+
+[node name="hand_marker_start" type="Marker2D" parent="markers"]
+position = Vector2(276, 456)
+
+[node name="hand_marker_end" type="Marker2D" parent="markers"]
+position = Vector2(896, 456)
+
+[node name="opponent_hand_marker_start" type="Marker2D" parent="markers"]
+position = Vector2(456, 96)
+
+[node name="opponent_hand_marker_end" type="Marker2D" parent="markers"]
+position = Vector2(1076, 96)
+
+[node name="play_marker" type="Marker2D" parent="markers"]
+position = Vector2(360, 120)
+
+[node name="response_marker" type="Marker2D" parent="markers"]
+position = Vector2(740, 120)
+
+[node name="zones" type="Node2D" parent="."]
+
+[node name="action" type="Node2D" parent="zones"]
+unique_name_in_owner = true
+
+[node name="reaction" type="Node2D" parent="zones"]
+unique_name_in_owner = true
+
+[node name="hand" type="Node2D" parent="zones"]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="opponent_hand" type="Node2D" parent="zones"]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="players" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="control_layer/global_button" to="." method="_on_global_button_pressed"]
+[connection signal="pressed" from="control_layer/meditate_button" to="." method="_on_meditate_button_pressed"]
+[connection signal="pressed" from="control_layer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="control_layer/resolve_button" to="." method="_on_resolve_button_pressed"]
+[connection signal="pressed" from="control_layer/view_deck" to="." method="_on_view_deck_pressed"]
+[connection signal="pressed" from="control_layer/view_discard" to="." method="_on_view_discard_pressed"]
+[connection signal="pressed" from="control_layer/showcase_panel/exit_showcase_button" to="." method="_on_exit_showcase_button_pressed"]
+[connection signal="pressed" from="control_layer/reorder_panel/reorder_done_button" to="." method="_on_reorder_done_button_pressed"]

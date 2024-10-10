@@ -10,16 +10,17 @@ script = ExtResource("1_u7aei")
 [node name="color_rect" type="ColorRect" parent="."]
 offset_right = 300.0
 offset_bottom = 420.0
+color = Color(0.98, 0.98, 0.98, 1)
 
 [node name="control_parent" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
+offset_right = 300.0
+offset_bottom = 420.0
 theme = ExtResource("2_40i7p")
 
 [node name="name_label" type="Label" parent="control_parent"]
+layout_mode = 0
 offset_top = 200.0
 offset_right = 300.0
 offset_bottom = 230.0
@@ -40,3 +41,6 @@ text = "text body lmao"
 scale = Vector2(2.34375, 1.5)
 texture = ExtResource("3_riwj2")
 centered = false
+
+[connection signal="mouse_entered" from="control_parent" to="." method="_on_control_parent_mouse_entered"]
+[connection signal="mouse_exited" from="control_parent" to="." method="_on_control_parent_mouse_exited"]
